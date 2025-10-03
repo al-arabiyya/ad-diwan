@@ -1,0 +1,6 @@
+{
+  "tailwindStylesheet": "./css/ad_diwan.css",
+  "plugins": [
+    "prettier-plugin-tailwindcss"
+  ]
+}
