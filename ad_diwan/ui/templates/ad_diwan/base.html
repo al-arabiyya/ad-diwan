@@ -1,4 +1,4 @@
-{% load app i18n static wagtailcore_tags wagtailuserbar %}
+{% load ad_diwan i18n static wagtailcore_tags wagtailuserbar %}
 <!DOCTYPE html>
 <html
   lang="{{ LANGUAGE_CODE }}"
@@ -119,7 +119,7 @@
                         data-tip="{% trans 'Search' %}"
                       >
                         <a
-                          href="{% url 'app:search' %}"
+                          href="{% url 'ad_diwan:search' %}"
                           class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
                         >
                           <i data-lucide="search" class="size-4 md:size-6"></i>
@@ -292,7 +292,7 @@
               <form
                 method="get"
                 class="join w-full"
-                action="{% url 'app:search' %}"
+                action="{% url 'ad_diwan:search' %}"
               >
                 <label
                   class="join-item w-full bg-transparent input input-primary"

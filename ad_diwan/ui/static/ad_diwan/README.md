@@ -12,7 +12,7 @@ To generate the styles:
 
 ```console
 npm install
-cd ad_diwan/ad_diwan/static/app
+cd ad_diwan/ad_diwan/static/ad_diwan
 npx @tailwindcss/cli -i ../static/ad_diwan/css/ad_diwan.css -o ../static/ad_diwan/css/styles.css --cwd ../../templates -m -w
 ```
 

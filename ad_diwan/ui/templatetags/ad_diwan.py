@@ -1,4 +1,4 @@
-"""app Template tags"""
+"""Ad Diwan Template tags"""
 
 from django import template
 from wagtail.models import Site

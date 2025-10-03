@@ -1,12 +1,12 @@
-# django-w-app Arabic translations.
+# ad_diwan Arabic translations.
 # Copyright (C) 2025 Yousuf Abu Shanab
-# This file is distributed under the same license as the django-w-app package.
+# This file is distributed under the same license as the ad_diwan package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: django-w-app 0.1.0\n"
+"Project-Id-Version: ad_diwan 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-26 08:58+0000\n"
 "PO-Revision-Date: 2025-6-20 HO:MI+ZONE\n"
