@@ -1,8 +1,8 @@
-"""Tests for ad_diwan.home.models"""
+"""Tests for ad_diwan.apps.home.models"""
 
 from django.test import TestCase
 
 
 # Create your tests here.
-class ModelTests(TestCase):
+class HomeTests(TestCase):
     """Home model tests"""

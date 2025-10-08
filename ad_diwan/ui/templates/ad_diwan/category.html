@@ -1,0 +1,62 @@
+{% extends 'ad_diwan/base.html' %}
+
+<!---->
+{% load i18n wagtailcore_tags wagtailimages_tags %}
+
+<!---->
+{% block content %}
+<div
+  class="mx-auto w-full prose prose-sm prose-video:rounded-box xl:prose-lg 2xl:prose-xl prose-headings:text-primary prose-img:rounded-box prose-img:w-full"
+>
+  <h1>{{ category.title }}</h1>
+
+  <p class="lead">{{ category.description }}</p>
+
+  <div>{{ category.content }}</div>
+
+  <h2>{% trans 'Poets' %}</h2>
+</div>
+
+<div class="grid gap-8">
+  <ol class="grid grid-cols-12 gap-4">
+    {% for poet in children.specific %}
+    <li class="col-span-12 md:col-span-6 lg:col-span-4 2xl:col-span-3">
+      <article
+        class="relative bg-base-100 border border-base-300 card card-sm md:card-md xl:card-lg 2xl:card-xl hover:bg-base-200"
+      >
+        <a href="{% pageurl poet %}" class="absolute inset-0 z-10">
+          <span class="sr-only">{% trans 'Details' %}</span>
+        </a>
+
+        {% if poet.image %}
+        <figure class="skeleton overflow-clip">
+          {% image poet.image fill-1920x1080 %}
+        </figure>
+        {% endif %}
+
+        <div class="card-body gap-4 lg:gap-6">
+          <h2 class="card-title text-primary">{{ poet.title }}</h2>
+          <p>{{ poet.description }}</p>
+
+          <div class="card-actions z-20">
+            <div
+              class="tooltip tooltip-primary"
+              data-tip="{% trans 'Country' %}"
+            >
+              <a
+                href="#"
+                class="badge badge-sm badge-primary md:badge-md xl:badge-lg 2xl:badge-xl"
+              >
+                {{ poet.country.name }}
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+    </li>
+    {% endfor %}
+  </ol>
+
+  {% include 'ad_diwan/components/pagination.html' %}
+</div>
+{% endblock %}

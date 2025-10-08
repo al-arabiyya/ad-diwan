@@ -1,0 +1,16 @@
+"""Tag models"""
+
+from django.db import models
+from modelcluster.fields import ParentalKey
+from taggit.models import TaggedItemBase
+
+
+# Create your models here.
+class Tag(TaggedItemBase):
+    """Through model for defining m2m rel between Poems and Tags"""
+
+    content_object = ParentalKey(
+        "ad_diwan_poems.Poem",
+        related_name="tagged_items",
+        on_delete=models.CASCADE,
+    )

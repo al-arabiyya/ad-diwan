@@ -1,1 +1,1 @@
-"""Tests for ad_diwan.home"""
+"""Tests for ad_diwan.api"""

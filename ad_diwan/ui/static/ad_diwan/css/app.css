@@ -57,6 +57,6 @@
 
 @layer base {
   * {
-    @apply font-sans rtl:font-kufi
+    @apply font-kufi
   }
 }

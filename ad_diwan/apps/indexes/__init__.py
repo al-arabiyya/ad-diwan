@@ -1,0 +1,1 @@
+"""Ad Diwan Index page"""

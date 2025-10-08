@@ -2,15 +2,46 @@
 
 <!---->
 {% block content %}
-<section class="container grid gap-12 mx-auto px-4 py-20">
-  {% include 'ad_diwan/components/breadcrumbs.html' %}
+<div
+  class="mx-auto w-full prose prose-sm prose-video:rounded-box xl:prose-lg 2xl:prose-xl prose-headings:text-primary prose-img:rounded-box prose-img:w-full"
+>
+  <h1>{{ index.title }}</h1>
 
-  <div
-    class="mx-auto prose prose-sm prose-video:rounded-box xl:prose-lg 2xl:prose-xl prose-headings:text-primary prose-img:rounded-box prose-img:w-full"
-  >
-    <h1>{{ index.title }}</h1>
+  {% block description %}{% endblock %}
 
-    {{ index.content }}
-  </div>
-</section>
+  <div>{{ index.content }}</div>
+</div>
+
+{% block list %}
+<ol class="grid grid-cols-12 gap-4">
+  {% for page in index.get_children.specific %}
+  <li class="relative col-span-12 md:col-span-6 lg:col-span-4 2xl:col-span-3">
+    <article
+      class="card card-sm bg-base-100 border border-base-300 md:card-md lg:card-lg xl:card-xl hover:bg-base-200"
+    >
+      <a href="{% pageurl page %}" class="absolute inset-0 z-10">
+        <span class="sr-only">{% trans 'Read' %}</span>
+      </a>
+      <div class="card-body">
+        <h2 class="card-title text-primary">{{ page.title }}</h2>
+        <p>{{ page.description }}</p>
+
+        <div class="card-actions z-20">
+          <div class="tooltip tooltip-primary" data-tip="{% trans 'Poets' %}">
+            <span
+              class="badge badge-sm badge-primary md:badge-sm xl:badge-lg 2xl:badge-xl"
+            >
+              <i data-lucide="user-pen" class="size-4 lg:size-6"></i>
+              {{ page.get_children_count }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </article>
+  </li>
+  {% endfor %}
+</ol>
+{% endblock %}
+
+<!---->
 {% endblock %}

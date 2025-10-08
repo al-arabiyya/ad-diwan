@@ -1,1 +1,1 @@
-"""Ad-diwan UI"""
+"""Ad-Diwan UI"""

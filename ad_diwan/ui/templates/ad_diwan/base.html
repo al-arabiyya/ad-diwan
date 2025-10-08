@@ -7,14 +7,11 @@
 >
   {% get_site_root as home %}
   <head>
-    {% block head %}
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block title %}{% trans 'Wagtail App' %}{% endblock %}</title>
-    {% block meta %}{% endblock %}
-
-    <!---->
-    {% block styles %}
+    <title>
+      {% trans 'Ad Diwan' %} | {% include "ad_diwan/components/title.html" %}
+    </title>
     <link
       href="{% static 'wagtail_blocks/css/styles.css' %}"
       rel="stylesheet"
@@ -30,19 +27,9 @@
       rel="stylesheet"
       type="text/css"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github-dark.min.css"
-    />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
-    {% endblock %}
-    <!---->
-
-    {% endblock %}
   </head>
 
-  <body class="font-sans antialiased">
+  <body class="antialiased">
     {% wagtailuserbar %}
 
     <div class="drawer">
@@ -58,12 +45,8 @@
               class="bg-base-100 relative size-full grow overflow-hidden sm:rounded-box"
             >
               <section class="size-full grid gap-4 overflow-y-auto">
-                <!-- Navbar -->
-                {% block navbar %}
-                <header
-                  class="absolute inset-x-0 top-0 z-40 px-2 backdrop-blur-3xl lg:px-4"
-                >
-                  <nav class="navbar py-4">
+                <header class="absolute inset-x-0 top-0 z-40 backdrop-blur-3xl">
+                  <nav class="navbar p-4">
                     <ol class="navbar-start gap-4">
                       <li
                         class="tooltip tooltip-right rtl:tooltip-left tooltip-primary z-10"
@@ -81,39 +64,48 @@
                         </label>
                       </li>
 
-                      {% block branding %}
                       <li
                         class="tooltip tooltip-right rtl:tooltip-left tooltip-primary"
-                        data-tip="{% trans 'Wagtail App' %}"
+                        data-tip="{% trans 'Ad Diwan' %}"
                       >
                         <h1 class="relative">
                           <a
                             href="{% pageurl home %}"
-                            class="btn btn-square btn-primary lg:btn-lg"
+                            class="btn btn-lg btn-square btn-primary lg:btn-xl"
                           >
                             <div
-                              class="btn btn-square btn-primary rotate-45 p-0 shadow-none lg:btn-lg"
+                              class="btn btn-lg btn-square btn-primary rotate-45 p-0 shadow-none lg:btn-xl"
                             >
-                              <i
-                                data-lucide="app"
-                                class="-rotate-45 lg:size-8 2xl:size-10"
-                              ></i>
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="lucide lucide-feather-text-icon lucide-feather-text -rotate-45 lg:size-8"
+                              >
+                                <path d="M17.9 8H9.2" />
+                                <path
+                                  d="M5.1 12H14l8-8.2c-2.3-2.3-6.1-2.3-8.5 0L2 15"
+                                />
+                                <path d="M2 19h8" />
+                                <path
+                                  d="M21 17v1c0 1 1 1.5 1 2.5 0 .8-.7 1.5-1.5 1.5h-5c-.8 0-1.5-.7-1.5-1.5 0-1 1-1.5 1-2.5v-1"
+                                />
+                                <path d="M14 17h8" />
+                              </svg>
                             </div>
-                            <span class="sr-only">
-                              {% trans 'Wagtail App' %}
-                            </span>
+                            <span class="sr-only">{% trans 'Ad Diwan' %}</span>
                           </a>
                         </h1>
                       </li>
-                      {% endblock %}
-                    </ol>
-
-                    <ol class="navbar-center gap-2">
-                      {% block navbar_center %}{% endblock %}
                     </ol>
 
                     <ol class="navbar-end gap-2">
-                      {% block navbar_end %}
                       <li
                         class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
                         data-tip="{% trans 'Search' %}"
@@ -126,111 +118,63 @@
                           <span class="sr-only">{% trans 'Search' %}</span>
                         </a>
                       </li>
-                      {% endblock %}
+                      <li
+                        class="hidden tooltip tooltip-left tooltip-primary dark:inline-block rtl:tooltip-right"
+                        data-tip="{% trans 'Toggle theme' %}"
+                      >
+                        <label
+                          class="swap swap-rotate btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+                        >
+                          <input
+                            type="checkbox"
+                            class="theme-controller"
+                            value="luxurylight"
+                          />
+                          <i
+                            data-lucide="sun"
+                            class="swap-off size-4 lg:size-6"
+                          ></i>
+                          <i
+                            data-lucide="moon-star"
+                            class="swap-on size-4 lg:size-6"
+                          ></i>
+                        </label>
+                      </li>
+                      <li
+                        class="tooltip tooltip-left tooltip-primary dark:hidden rtl:tooltip-right"
+                        data-tip="{% trans 'Toggle theme' %}"
+                      >
+                        <label
+                          class="swap swap-rotate btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+                        >
+                          <input
+                            type="checkbox"
+                            class="theme-controller"
+                            value="luxury"
+                          />
+                          <i
+                            data-lucide="moon-star"
+                            class="swap-off size-4 lg:size-6"
+                          ></i>
+                          <i
+                            data-lucide="sun"
+                            class="swap-on size-4 lg:size-6"
+                          ></i>
+                        </label>
+                      </li>
                     </ol>
                   </nav>
                 </header>
-                {% endblock %}
 
-                <!---->
-                {% block content %}
                 <div class="container flex flex-col gap-8 px-4 py-20 mx-auto">
-                  <div
-                    class="mx-auto prose prose-sm prose-video:rounded-box xl:prose-lg 2xl:prose-xl prose-headings:text-primary prose-img:rounded-box prose-img:w-full"
-                  >
-                    <h1>{% trans 'Wagtail App' %}</h1>
+                  {% include 'ad_diwan/components/breadcrumbs.html' %}
 
-                    <p>
-                      {% blocktrans trimmed %}A Wagtail CMS app template with
-                      dependency management and DevOps best practices for devs.
-                      {% endblocktrans %}
-                    </p>
-                  </div>
+                  <!---->
+                  {% block content %}{% endblock %}
 
-                  <ol class="grid grid-cols-12 gap-4">
-                    <li
-                      role="article"
-                      class="card bg-base-100 hover:bg-base-200 border border-base-300 card-sm md:card-md xl:card-lg 2xl:card-xl col-span-12 size-full shadow-sm md:col-span-6 lg:col-span-4 2xl:col-span-3"
-                    >
-                      <a
-                        href="https://github.com/al-arabiyya/ad-diwan"
-                        class="absolute inset-0"
-                      >
-                        <span class="sr-only">{% trans 'Docs' %}</span>
-                      </a>
-
-                      <div class="card-body justify-end">
-                        <h2 class="card-title text-primary">
-                          <i
-                            data-lucide="book-text"
-                            class="size-4 md:size-6"
-                          ></i>
-                          {% trans 'Docs' %}
-                        </h2>
-
-                        <p class="grow-0">
-                          {% trans 'Get started with Wagtail App' %}
-                        </p>
-                      </div>
-                    </li>
-                    <li
-                      role="article"
-                      class="card bg-base-100 hover:bg-base-200 border border-base-300 card-sm md:card-md xl:card-lg 2xl:card-xl col-span-12 size-full shadow-sm md:col-span-6 lg:col-span-4 2xl:col-span-3"
-                    >
-                      <a
-                        href="https://github.com/al-arabiyya/ad-diwan#Contributing"
-                        class="absolute inset-0"
-                      >
-                        <span class="sr-only">{% trans 'Contribute' %}</span>
-                      </a>
-
-                      <div class="card-body justify-end">
-                        <h2 class="card-title text-primary">
-                          <i
-                            data-lucide="folder-git-2"
-                            class="size-4 md:size-6"
-                          ></i>
-                          {% trans 'Contribute' %}
-                        </h2>
-
-                        <p class="grow-0">
-                          {% blocktrans trimmed %}Please refer to our
-                          CONTRIBUTING guide{% endblocktrans %}
-                        </p>
-                      </div>
-                    </li>
-                    <li
-                      role="article"
-                      class="card bg-base-100 hover:bg-base-200 border border-base-300 card-sm md:card-md xl:card-lg 2xl:card-xl col-span-12 size-full shadow-sm md:col-span-6 lg:col-span-4 2xl:col-span-3"
-                    >
-                      <a
-                        href="https://github.com/al-arabiyya/ad-diwan/issues"
-                        class="absolute inset-0"
-                      >
-                        <span class="sr-only">{% trans 'Support' %}</span>
-                      </a>
-
-                      <div class="card-body justify-end">
-                        <h2 class="card-title text-primary">
-                          <i
-                            data-lucide="heart-handshake"
-                            class="size-4 md:size-6"
-                          ></i>
-                          {% trans 'Support' %}
-                        </h2>
-
-                        <p class="grow-0">
-                          {% blocktrans trimmed %}For inquiries or support,
-                          please open an issue{% endblocktrans %}
-                        </p>
-                      </div>
-                    </li>
-                  </ol>
+                  <!---->
+                  {% include 'ad_diwan/components/prev_next.html' %}
                 </div>
-                {% endblock %}
-
-                <!---->
-                {% block footer %}{% endblock %}
               </section>
             </section>
           </div>
@@ -251,37 +195,55 @@
             <div class="grid gap-4 p-4">
               <header class="flex items-center justify-between gap-4">
                 {% block drawer_branding %}
-                <div
-                  class="tooltip tooltip-right rtl:tooltip-left tooltip-primary tooltip-open aspect-square"
-                  data-tip="{% trans 'Wagtail App' %}"
+                <li
+                  class="tooltip-open tooltip tooltip-right rtl:tooltip-left tooltip-primary"
+                  data-tip="{% trans 'Ad Diwan' %}"
                 >
                   <h1 class="relative">
                     <a
                       href="{% pageurl home %}"
-                      class="btn btn-square btn-primary lg:btn-lg"
+                      class="btn btn-lg btn-square btn-primary lg:btn-xl"
                     >
                       <div
-                        class="btn btn-square btn-primary rotate-45 p-0 shadow-none lg:btn-lg"
+                        class="btn btn-lg btn-square btn-primary rotate-45 p-0 shadow-none lg:btn-xl"
                       >
-                        <i
-                          data-lucide="app"
-                          class="-rotate-45 lg:size-8 2xl:size-10"
-                        ></i>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="lucide lucide-feather-text-icon lucide-feather-text -rotate-45 lg:size-8"
+                        >
+                          <path d="M17.9 8H9.2" />
+                          <path
+                            d="M5.1 12H14l8-8.2c-2.3-2.3-6.1-2.3-8.5 0L2 15"
+                          />
+                          <path d="M2 19h8" />
+                          <path
+                            d="M21 17v1c0 1 1 1.5 1 2.5 0 .8-.7 1.5-1.5 1.5h-5c-.8 0-1.5-.7-1.5-1.5 0-1 1-1.5 1-2.5v-1"
+                          />
+                          <path d="M14 17h8" />
+                        </svg>
                       </div>
-                      <span class="sr-only"> {% trans 'Wagtail App' %} </span>
+                      <span class="sr-only">{% trans 'Ad Diwan' %}</span>
                     </a>
                   </h1>
-                </div>
+                </li>
                 {% endblock %}
 
                 <div
-                  class="tooltip tooltip-left rtl:tooltip-right hover:tooltip-error"
+                  class="tooltip tooltip-left tooltip-primary rtl:tooltip-right"
                   data-tip="{% trans 'Close' %}"
                 >
                   <label
                     for="nav-drawer"
                     aria-label="{% trans 'close sidebar' %}"
-                    class="btn btn-square btn-soft btn-sm btn-primary hover:btn-error md:btn-md 2xl:btn-lg"
+                    class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
                   >
                     <i data-lucide="x" class="size-4 md:size-6"></i>
                     <span class="sr-only">{% trans 'Close' %}</span>
@@ -295,7 +257,7 @@
                 action="{% url 'ad_diwan:search' %}"
               >
                 <label
-                  class="join-item w-full bg-transparent input input-primary"
+                  class="join-item w-full bg-transparent input input-ghost input-primary"
                 >
                   <i
                     data-lucide="search"
@@ -309,44 +271,17 @@
                     placeholder="{% trans 'Search' %}"
                   />
                 </label>
-
-                <button
-                  type="submit"
-                  class="btn join-item btn-square btn-soft btn-primary"
-                >
-                  <i data-lucide="check-circle2" class="size-4 md:size-6"></i>
-                  <span class="sr-only">{% trans 'Search' %}</span>
-                </button>
               </form>
             </div>
 
             <ol class="menu 2xl:menu-lg size-full grow gap-2 overflow-y-auto">
               {% block drawer_content %}
               <li>
-                <a href="{% pageurl home %}">
-                  <i data-lucide="home" class="size-4 md:size-6"></i>
-                  {% trans 'Home' %}
-                </a>
+                <a href="{% pageurl home %}">{% trans 'Home' %}</a>
               </li>
-              <li>
-                <a href="https://github.com/al-arabiyya/ad-diwan">
-                  <i data-lucide="folder-git-2" class="size-4 md:size-6"></i>
-                  {% trans 'Repo' %}
-                </a>
-              </li>
-              {% for page in home.get_children %}
-              <li>
-                <a href="{% pageurl page %}">{{ page }}</a>
-              </li>
-              {% endfor %}
-              <!---->
               {% endblock %}
             </ol>
           </div>
-
-          <ol class="grid gap-4 p-4">
-            {% block drawer_bottom %}{% endblock %}
-          </ol>
         </section>
       </section>
     </div>

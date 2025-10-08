@@ -19,6 +19,7 @@ RUN cp -r ./ad_diwan ./core
 
 # Settings
 RUN echo "'ad_diwan'," >> core/settings.py
+RUN echo "'ad_diwan.api'," >> core/settings.py
 RUN echo "'ad_diwan.apps.home'," >> core/settings.py
 RUN echo "'ad_diwan.cms'," >> core/settings.py
 RUN echo "'ad_diwan.ui'," >> core/settings.py

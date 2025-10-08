@@ -28,7 +28,9 @@ jobs:
           mv ad_diwan core
 
           # Settings
+          echo "INSTALLED_APPS += [" >> core/settings.py
           echo "'ad_diwan'," >> core/settings.py
+          echo "'ad_diwan.api'," >> core/settings.py
           echo "'ad_diwan.apps.home'," >> core/settings.py
           echo "'ad_diwan.cms'," >> core/settings.py
           echo "'ad_diwan.ui'," >> core/settings.py

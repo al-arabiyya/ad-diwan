@@ -1,1 +1,1 @@
-"""Ad-Diwan APIs"""
+"""Ad Diwan APIs"""

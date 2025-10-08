@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "ad-diwan"
 version = "0.1.0"
-description = "Poets and Poems"
+description = "Arabic poetry"
 authors = ["Yousef Abu Shanab <josephyousef249@gmail.com>"]
 license = "MIT"
 readme = "README.md"
@@ -12,11 +12,12 @@ documentation = "https://github.com/al-arabiyya/ad-diwan"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-django = "^5.2.1"
+django = ">=5.2.1"
+django-filter = ">=25.1"
 djangorestframework = ">=3.16.0"
 drf-restwind = ">=0.2.0"
 wagtail = ">=7.0"
-wagtail-tw-blocks = ">=0.2.4"
+wagtail-tw-blocks = ">=0.2.5"
 
 
 [tool.poetry.group.dev.dependencies]

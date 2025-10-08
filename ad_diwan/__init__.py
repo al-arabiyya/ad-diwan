@@ -1,1 +1,1 @@
-"""Ad-diwan: Poets and Poems"""
+"""Ad-diwan: Arabic poetry"""
